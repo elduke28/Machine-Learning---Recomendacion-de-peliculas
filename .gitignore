@@ -3,4 +3,6 @@ MLOpsReviews/
 src/
 Material de apoyo.md
 PI01 - MLOps.pdf
-Readme.md
+Readmee.md
+__pycache__
+database.py
