@@ -9,15 +9,15 @@ app = FastAPI(title= "API para consultar datos, en plataformas de Streaming",
 @app.on_event('startup')
 def startup():
     global df; global df_score; global plataformas
-    df = pd.read_csv('https://github.com/elduke28/Poyecto-individual/blob/main/Datasets/Plataformas.csv', delimiter=';')
-    df_score = pd.read_csv('https://github.com/elduke28/Poyecto-individual/blob/main/Datasets/score_users.csv')
+    df = pd.read_csv('Datasets/Plataformas.csv', delimiter=';')
+    df_score = pd.read_csv('Datasets/score_users.csv')
     plataformas = ['amazon', 'hulu', 'netflix', 'disney']
 
 
 # Título de más duración, por plataforma, año y tipo de duración:  
 # URL para realizar la consulta /get_max_duration(año,'plataforma','[min o season]')
 @app.get('/get_max_duration({year},{platform},{duration_type})')
-def get_max_duration(year:int, platform:str, duration_type:str):
+async def get_max_duration(year:int, platform:str, duration_type:str):
     platform = platform.replace("'","")
     platform = platform.lower()
     if platform not in plataformas: return f'Sin datos para la plataforma {platform}' # Verificacion de plataforma
