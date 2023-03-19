@@ -9,8 +9,8 @@ app = FastAPI(title= "API para consultar datos, en plataformas de Streaming",
 @app.on_event('startup')
 def startup():
     global df; global df_score; global plataformas
-    df = pd.read_csv('https://github.com/elduke28/Poyecto-individual/blob/main/Datasets/Plataformas.csv', delimiter=';')
-    df_score = pd.read_csv('https://github.com/elduke28/Poyecto-individual/blob/main/Datasets/score_users.csv')
+    df = pd.read_csv('https://github.com/elduke28/Poyecto-individual/blob/main/Datasets/Plataformas.csv', delimiter=';', low_memory=False)
+    df_score = pd.read_csv('https://github.com/elduke28/Poyecto-individual/blob/main/Datasets/score_users.csv', low_memory=False)
     plataformas = ['amazon', 'hulu', 'netflix', 'disney']
 
 
