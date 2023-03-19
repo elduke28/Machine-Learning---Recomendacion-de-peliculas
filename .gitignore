@@ -1,8 +1,9 @@
 venv/
 MLOpsReviews/
 src/
+Datasets/score_movies.csv
 Material de apoyo.md
 PI01 - MLOps.pdf
 Readmee.md
-__pycache__
 PI.ipynb
+__pycache__
