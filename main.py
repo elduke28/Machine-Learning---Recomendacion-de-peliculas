@@ -10,7 +10,7 @@ app = FastAPI(title= "API para consultar datos, en plataformas de Streaming",
 def startup():
     global df; global df_score; global plataformas
     df = pd.read_csv('Datasets/Plataformas.csv', delimiter=';')
-    df_score = pd.read_csv('Datasets/score_users.csv')
+    df_score = pd.read_csv('Datasets/score_prom_movies.csv')
     plataformas = ['amazon', 'hulu', 'netflix', 'disney']
 
 
@@ -30,13 +30,13 @@ async def get_max_duration(year:int, platform:str, duration_type:str):
     id_max = max_duration.duration_int.idxmax()
     return f'El título de la plataforma {platform}, del año {year} con mayor duración es: {max_duration.loc[id_max].title.title()}, con una duración de: {max_duration.loc[id_max].duration_int} {duration_type}.'
 
-# Cantidad de películas por plataforma con un puntaje mayor a XX en determinado año. El scored debe ser una numero comprendido entre 1 a 100
+# Cantidad de películas por plataforma con un puntaje mayor a XX en determinado año. El scored debe ser una numero comprendido entre 1 a 5.
 @app.get('/get_score_count({platform},{scored},{year})')
 async def get_score_count(platform: str, scored: float, year:int):
     platform = platform.replace("'","")
     platform = platform.lower()
     if platform not in plataformas: return f'Sin datos para la plataforma: {platform}'
-    if not 1 <= scored <= 100 :  return f'El scored no esta dentro del rango 1 a 100'
+    if not 1 <= scored <= 5 :  return f'El scored no esta dentro del rango 1 a 5'
     df_add_score = pd.merge(df, df_score, how='inner', on = 'id')
     score_count = df_add_score[(df_add_score.plataform == platform) & (df_add_score.release_year == year) & ((df_add_score.score > scored) )]
     if score_count.shape[0] == 0: return f'Sin datos del año {year}'
