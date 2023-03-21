@@ -2,20 +2,19 @@ from fastapi import FastAPI
 import pandas as pd
 
 #app = FastAPI()
-app = FastAPI(title= "API para consultar datos, en plataformas de Streaming",
-    description= "Amazon, Disney, Hulu, Netflix")
+app = FastAPI(title= "API para consultar datos, en plataformas de Streaming", version= '1.0',
+    description= "Las plataformas a consultar: Amazon, Disney, Hulu, Netflix")
 
 
 @app.on_event('startup')
 def startup():
     global df; global df_score; global plataformas
-    df = pd.read_csv('Datasets/Plataformas.csv', delimiter=';')
-    df_score = pd.read_csv('Datasets/score_prom_movies.csv')
+    df = pd.read_csv('../Datasets/Plataformas.csv', delimiter=';')
+    df_score = pd.read_csv('../Datasets/score_prom_movies.csv')
     plataformas = ['amazon', 'hulu', 'netflix', 'disney']
 
 
 # Título de más duración, por plataforma, año y tipo de duración:  
-# URL para realizar la consulta /get_max_duration(año,'plataforma','[min o season]')
 @app.get('/get_max_duration({year},{platform},{duration_type})')
 async def get_max_duration(year:int, platform:str, duration_type:str):
     platform = platform.replace("'","")
@@ -36,14 +35,13 @@ async def get_score_count(platform: str, scored: float, year:int):
     platform = platform.replace("'","")
     platform = platform.lower()
     if platform not in plataformas: return f'Sin datos para la plataforma: {platform}'
-    if not 1 <= scored <= 5 :  return f'El scored no esta dentro del rango 1 a 5'
+    if not 0 <= scored <= 5 :  return f'El scored no esta dentro del rango 1 a 5'
     df_add_score = pd.merge(df, df_score, how='inner', on = 'id')
     score_count = df_add_score[(df_add_score.plataform == platform) & (df_add_score.release_year == year) & ((df_add_score.score > scored) )]
     if score_count.shape[0] == 0: return f'Sin datos del año {year}'
-    return f'La cantidad de peliculas de la plataforma {platform}, del año {year}, con un scored mayor a {scored} es de: {score_count.id.count()}.'
+    return f'La cantidad de títulos de la plataforma {platform}, del año {year}, con un scored mayor a {scored} es de: {score_count.id.count()}.'
 
 # Total de películas por plataforma:
-# URL para realizar la consulta /get_count_platform('platform')
 @app.get('/get_count_platform({platform})')
 async def get_count_platform(platform:str):
     platform = platform.replace("'","")
@@ -55,7 +53,6 @@ async def get_count_platform(platform:str):
 
 
 # Actor con mayor ocurrencias, por plataforma y año:
-# URL para realizar la consulta /get_actor('Netflix',2018)
 @app.get('/get_actor({platform},{year})')
 async def get_actor(platform:str,year:int):
     platform = platform.replace("'","")
