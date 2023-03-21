@@ -56,6 +56,4 @@ El analisis exploratorio de datos se realizó con:
 <p style = 'text-align:center;'>  <img src="img\streamlit.jpg" height=100 ></p>
 
 Luego de realizar el EDA, se seleccionó de los atributos relevantes (usuario, movieId, rating) para el modelo de recomendación, implementando la librería `Surprise`.
-Se incorporó el framework `Streamlit` para generar una interfase gráfica, y determinar mediante el modelo si un título se recomienda o no a un usuario.
-Finalmente desplegué esta aplicación en huggingface para acceder a ella desde internet.
-
+Se incorporó el framework `Streamlit` para generar una interfase gráfica, y determinar mediante el modelo si un título se recomienda o no a un usuario. Finalmente se realizó el deployment en `Streamlit Cloud` para acceder a la app desde internet. [Sistema de recomendacion](https://elduke28-poyecto-individual-ml-rsml-deploy-streamlit-us54mv.streamlit.app/)
