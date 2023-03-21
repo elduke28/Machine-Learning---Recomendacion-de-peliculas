@@ -10,8 +10,8 @@ modelo_ml = st.container()
 recomendacion = st.container()
 
 # Cargamos los dataset
-data_score = pd.read_csv('../EDA/score_movies_EDA.csv')
-data_plat = pd.read_csv('../EDA/plataformas_EDA.csv', usecols = [0,2], names = ['movieId', 'name'], skiprows=1)
+data_score = pd.read_csv('score_movies_EDA.csv')
+data_plat = pd.read_csv('plataformas_EDA.csv', usecols = [0,2], names = ['movieId', 'name'], skiprows=1)
 
 with encabezado:
     st.title('Proyecto de Machine Learning - Sistema de Recomendación')
