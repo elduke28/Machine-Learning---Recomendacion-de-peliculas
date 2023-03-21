@@ -3,7 +3,7 @@
 
 <p align="center"> <img src="img\Devops-vs-Mlops.jpg"  height=250 ></p>
 <br>
-El presente proyecto, se realizó en la etapa de Labs del bootcamp de Data Science en Henry. El mismo consite en la realización de un sistema de recomendación de películas y series, de distintas plataformas de streaming, asumiendo el rol de MLOPs Engenieer.
+El presente proyecto, se realizó en la etapa de Labs del bootcamp de Data Science en Henry. El mismo consiste en la realización de un sistema de recomendación de películas y series, de distintas plataformas de streaming, asumiendo el rol de MLOPs Engenieer.
 
 <hr>
 
@@ -16,7 +16,7 @@ En primera instancia, ingestar los datos desde diversos datasets de plataformas 
 * **API**: Aplicación desarrollada en FastAPi. Se encuentra: <br> 
 :small_blue_diamond: _main.py_ contiene el codigo de la API, con las consultas requeridas. <br> 
 :small_blue_diamond: _requierements.txt_ contiene las dependencias necesarias para el funcionamiento de la API.
-* **ETL**: Transformaciones realizadas a los datasets
+* **ETL**: Transformaciones realizadas a los datasets, mediante el uso de `MySQL Workbench`.
 * **EDA**: Análisis exploratorio de los datos. <br>
 :small_blue_diamond: _EDA.ipynb_ cuaderno de notebook, el cual contiene el análisis realizado.<br>
 :small_blue_diamond: _.csv_ datasets luego de haber realizado el EDA.
