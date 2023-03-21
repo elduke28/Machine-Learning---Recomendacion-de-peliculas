@@ -10,19 +10,19 @@ El presente proyecto, se realizó en la etapa de Labs del bootcamp de Data Scien
 ## Objetivos
 En primera instancia, ingestar los datos desde diversos datasets de plataformas de streaming. Sobre los mismos hacer las transformaciones necesarias, unificando el dataset. Mediante `FastApi` desarrollar una API y realizar el deployment de la API en `Render`. Luego obtener el Análisis Exploratorio de Datos (EDA). Finalmente preparar el modelo de machine learning para el sistema de recomendación con la librería `Surprise` y generar un deployment del mismo con la librería `Streamlit`.
 
-:blue_circle: **INICIO** :blue_circle:
+:large_blue_circle: **INICIO** :large_blue_circle:
 
-* **Datasets**: Bases de datos
-* **API**: Aplicación desarrollada en FastAPi. Se encuentra: <br> 
-:small_blue_diamond: _main.py_ contiene el codigo de la API, con las consultas requeridas. <br> 
+* [**Datasets**](Datasets): Bases de datos
+* [**API**](API): Aplicación desarrollada en FastAPi. Se encuentra: <br> 
+:small_blue_diamond: _main.py_ contiene el código de la API, con las consultas requeridas. <br> 
 :small_blue_diamond: _requierements.txt_ contiene las dependencias necesarias para el funcionamiento de la API.
-* **ETL**: Transformaciones realizadas a los datasets, mediante el uso de `MySQL Workbench`.
-* **EDA**: Análisis exploratorio de los datos. <br>
+* [**ETL**](ETL): Transformaciones realizadas a los datasets, mediante el uso de `MySQL Workbench`.
+* [**EDA**](EDA): Análisis exploratorio de los datos. <br>
 :small_blue_diamond: _EDA.ipynb_ cuaderno de notebook, el cual contiene el análisis realizado.<br>
 :small_blue_diamond: _.csv_ datasets luego de haber realizado el EDA.
-* **ML_RS**: Modelo de machine learning para el sistema de recomenación de películas y series <br> 
+* [**ML_RS**](ML_RS): Modelo de machine learning para el sistema de recomendación de películas y series <br> 
 :small_blue_diamond: *ML_Surprise.ipynb* cuaderno de notebook, el cual contiene la realización del modelo, con la optimización de sus parámetros.<br>
-:small_blue_diamond: *ML_deploy_streamlit.py* contiene el codigo, para el deployment del sistema de recomendación en Streamlit.
+:small_blue_diamond: *ML_deploy_streamlit.py* contiene el código para el deployment del sistema de recomendación en Streamlit.
 <br><br>
 
 ## API
@@ -44,9 +44,9 @@ Luego de la realización del ETL, se implementó una API mediante el framework `
 
 ## EDA
 
-En el mismo se visualizaron los valores nulos, se identificaron y eliminaron duplicados, se imputaron valores faltantes y se procedio a la eliminación de columnas irrelevantes.
+En el mismo se visualizaron los valores nulos, se identificaron y eliminaron duplicados, se imputaron valores faltantes y se procedió a la eliminación de columnas irrelevantes.
 El analisis exploratorio de datos se realizó con:    
-:small_blue_diamond:**pandas:** Se utilizó para visualizar rapidamente los nulos y duplicados de los datasets, además del formato de los mismos.  
+:small_blue_diamond:**pandas:** Se utilizó para visualizar datos nulos y duplicados de los datasets, junto al formato de los mismos.  
 :small_blue_diamond:**ydata_profiling:** Se utilizó para obtener un EDA automatizado del dataset.   
 :small_blue_diamond:**matplotlib y seaborn:** Se utilizó en conjunto para graficar.
 <br><br>
@@ -56,4 +56,4 @@ El analisis exploratorio de datos se realizó con:
 <p style = 'text-align:center;'>  <img src="img\streamlit.jpg" height=100 ></p>
 
 Luego de realizar el EDA, se seleccionó de los atributos relevantes (usuario, movieId, rating) para el modelo de recomendación, implementando la librería `Surprise`.
-Se incorporó el framework `Streamlit` para generar una interfase gráfica, y determinar mediante el modelo si un título se recomienda o no a un usuario. Finalmente se realizó el deployment en `Streamlit Cloud` para acceder a la app desde internet. [Sistema de recomendacion](https://elduke28-poyecto-individual-ml-rsml-deploy-streamlit-us54mv.streamlit.app/)
+Se incorporó el framework `Streamlit` para generar una interfase gráfica, y determinar mediante el modelo si un título se recomienda o no a un usuario. Finalmente se realizó el deployment en `Streamlit Cloud` para acceder a la app desde internet. [Sistema de recomendación](https://elduke28-poyecto-individual-ml-rsml-deploy-streamlit-us54mv.streamlit.app/)
